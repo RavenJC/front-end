@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Your Favorite Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo">ShopHub</div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone-alt"></i> Customer Service: (02) 8888-1234</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                <a href="#" id="topAuthLink"><i class="fas fa-user"></i> Login / Register</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo" id="logoLink">
+                <span class="logo-text">ShopHub</span>
+            </a>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for products...">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <a href="#" class="header-action" id="wishlistLink">
+                    <i class="fas fa-heart"></i>
+                    <span class="action-badge" id="wishlistBadge">0</span>
+                </a>
+                <a href="#" class="header-action cart-action" id="cartLink">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="action-badge" id="cartBadge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="container">
+            <ul class="category-menu">
+                <li><a href="#" id="homeLink"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" id="productsLink"><i class="fas fa-th"></i> All Products</a></li>
+                <li><a href="#" id="ordersLink"><i class="fas fa-box"></i> My Orders</a></li>
+                <li><a href="#" id="profileLink"><i class="fas fa-user-circle"></i> Account</a></li>
+                <li id="adminNavLink" style="display: none;"><a href="#" id="adminLink"><i class="fas fa-cog"></i> Admin Panel</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="homeSection" class="section active">
+            <!-- Hero Banner Slider -->
+            <div class="hero-slider">
+                <div class="slider-container">
+                    <div class="slide active" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);">
+                        <div class="slide-content">
+                            <span class="slide-tag">Big Sale</span>
+                            <h1>Mega Sale Festival</h1>
+                            <p>Up to 70% off on selected items</p>
+                            <button class="btn btn-white" onclick="showSection('productsSection')">Shop Now</button>
+                        </div>
+                        <div class="slide-image">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+                    <div class="slide" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);">
+                        <div class="slide-content">
+                            <span class="slide-tag">New Arrivals</span>
+                            <h1>Latest Collection</h1>
+                            <p>Discover trending products</p>
+                            <button class="btn btn-white" onclick="showSection('productsSection')">Explore</button>
+                        </div>
+                        <div class="slide-image">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="slide" style="background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%);">
+                        <div class="slide-content">
+                            <span class="slide-tag">Limited Time</span>
+                            <h1>Free Shipping</h1>
+                            <p>On orders over P1,500</p>
+                            <button class="btn btn-white" onclick="showSection('productsSection')">Order Now</button>
+                        </div>
+                        <div class="slide-image">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Flash Sale Banner -->
+                <div class="flash-sale-banner">
+                    <div class="flash-sale-header">
+                        <div class="flash-sale-title">
+                            <i class="fas fa-bolt"></i>
+                            <span>Flash Sale</span>
+                        </div>
+                        <div class="countdown">
+                            <span>Ends in:</span>
+                            <div class="countdown-timer">
+                                <div class="time-box"><span id="hours">08</span></div>
+                                <span class="time-sep">:</span>
+                                <div class="time-box"><span id="minutes">45</span></div>
+                                <span class="time-sep">:</span>
+                                <div class="time-box"><span id="seconds">30</span></div>
+                            </div>
+                        </div>
+                        <a href="#" class="shop-all" onclick="showSection('productsSection')">Shop All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="flash-products" id="flashSaleProducts"></div>
+                </div>
+
+                <!-- Categories -->
+                <div class="section-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" data-category="Electronics">
+                        <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                        <span>Electronics</span>
+                    </div>
+                    <div class="category-item" data-category="Fashion">
+                        <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                        <span>Fashion</span>
+                    </div>
+                    <div class="category-item" data-category="Home">
+                        <div class="category-icon"><i class="fas fa-couch"></i></div>
+                        <span>Home & Living</span>
+                    </div>
+                    <div class="category-item" data-category="Beauty">
+                        <div class="category-icon"><i class="fas fa-spa"></i></div>
+                        <span>Beauty</span>
+                    </div>
+                    <div class="category-item" data-category="Sports">
+                        <div class="category-icon"><i class="fas fa-futbol"></i></div>
+                        <span>Sports</span>
+                    </div>
+                    <div class="category-item" data-category="Toys">
+                        <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                        <span>Toys & Games</span>
+                    </div>
+                    <div class="category-item" data-category="Groceries">
+                        <div class="category-icon"><i class="fas fa-shopping-basket"></i></div>
+                        <span>Groceries</span>
+                    </div>
+                    <div class="category-item" data-category="Health">
+                        <div class="category-icon"><i class="fas fa-heartbeat"></i></div>
+                        <span>Health</span>
+                    </div>
+                    <div class="category-item" data-category="Automotive">
+                        <div class="category-icon"><i class="fas fa-car"></i></div>
+                        <span>Automotive</span>
+                    </div>
+                    <div class="category-item" data-category="Books">
+                        <div class="category-icon"><i class="fas fa-book"></i></div>
+                        <span>Books</span>
+                    </div>
+                </div>
+
+                <!-- Daily Deals -->
+                <div class="section-header">
+                    <h2>Daily Deals</h2>
+                    <a href="#" class="see-all" onclick="showSection('productsSection')">See All <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="daily-deals-scroll" id="dailyDeals"></div>
+
+                <!-- Featured Products -->
+                <div class="section-header">
+                    <h2>Featured Products</h2>
+                    <a href="#" class="see-all" onclick="showSection('productsSection')">See All <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid-home" id="featuredProducts"></div>
+
+                <!-- Just For You -->
+                <div class="section-header">
+                    <h2>Just For You</h2>
+                </div>
+                <div class="product-grid-home" id="recommendedProducts"></div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="productsSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>All Products</span>
+                </div>
+                
+                <div class="products-layout">
+                    <aside class="filters-sidebar">
+                        <div class="filter-card">
+                            <h3>Filters</h3>
+                            <div class="filter-group">
+                                <label>Category</label>
+                                <select id="categoryFilter" class="filter-select">
+                                    <option value="">All Categories</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Sort By</label>
+                                <select id="sortFilter" class="filter-select">
+                                    <option value="">Default</option>
+                                    <option value="name-asc">Name: A to Z</option>
+                                    <option value="name-desc">Name: Z to A</option>
+                                    <option value="price-asc">Price: Low to High</option>
+                                    <option value="price-desc">Price: High to Low</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="filterInStock">
+                                    <span class="checkmark"></span>
+                                    In Stock Only
+                                </label>
+                            </div>
+                            <div class="filter-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="filterActive">
+                                    <span class="checkmark"></span>
+                                    Active Products
+                                </label>
+                            </div>
+                            <div class="filter-buttons">
+                                <button class="btn btn-primary btn-sm" id="applyFiltersBtn">Apply</button>
+                                <button class="btn btn-ghost btn-sm" id="clearFiltersBtn">Clear</button>
+                            </div>
+                        </div>
+                    </aside>
+                    
+                    <div class="products-main">
+                        <div class="products-header">
+                            <div class="products-count"><span id="productsCount">0</span> Products</div>
+                            <div class="view-options">
+                                <button class="view-btn active"><i class="fas fa-th"></i></button>
+                                <button class="view-btn"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-grid" id="productsList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cartSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Shopping Cart</span>
+                </div>
+                
+                <div class="cart-layout">
+                    <div class="cart-main">
+                        <div class="cart-header">
+                            <h2>Shopping Cart</h2>
+                        </div>
+                        <div class="cart-items" id="cartItems"></div>
+                    </div>
+                    
+                    <div class="cart-sidebar">
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="cartSubtotal">P0.00</span>
+                            </div>
+                            <div class="summary-row discount">
+                                <span>Discount</span>
+                                <span id="cartDiscount">-P0.00</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="cartTotal">P0.00</span>
+                            </div>
+                            <div class="discount-input">
+                                <input type="text" id="discountCode" placeholder="Enter discount code">
+                                <button class="btn btn-secondary" id="applyDiscountBtn">Apply</button>
+                            </div>
+                            <button class="btn btn-primary btn-block btn-lg" id="checkoutBtn">
+                                <i class="fas fa-lock"></i> Checkout
+                            </button>
+                            <div class="cart-actions">
+                                <button class="btn btn-ghost btn-sm" id="clearCartBtn"><i class="fas fa-trash"></i> Clear Cart</button>
+                                <button class="btn btn-ghost btn-sm" id="saveCartBtn"><i class="fas fa-bookmark"></i> Save Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wishlist Section -->
+        <section id="wishlistSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Wishlist</span>
+                </div>
+                <div class="section-title">
+                    <h2>My Wishlist</h2>
+                </div>
+                <div class="wishlist-items" id="wishlistItems"></div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="ordersSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>My Orders</span>
+                </div>
+                <div class="section-title">
+                    <h2>My Orders</h2>
+                </div>
+                <div class="orders-tabs">
+                    <button class="order-tab active" data-status="">All</button>
+                    <button class="order-tab" data-status="pending">Pending</button>
+                    <button class="order-tab" data-status="processing">Processing</button>
+                    <button class="order-tab" data-status="shipped">Shipped</button>
+                    <button class="order-tab" data-status="delivered">Delivered</button>
+                    <button class="order-tab" data-status="cancelled">Cancelled</button>
+                </div>
+                <div class="orders-list" id="ordersList"></div>
+            </div>
+        </section>
+
+        <!-- Order Detail Modal -->
+        <div id="orderDetailModal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content modal-lg">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <div id="orderDetail"></div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content modal-lg">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <div id="productDetail"></div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <section id="profileSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>My Account</span>
+                </div>
+                
+                <div class="account-layout">
+                    <div class="account-sidebar">
+                        <div class="account-user">
+                            <div class="user-avatar"><i class="fas fa-user"></i></div>
+                            <div class="user-info">
+                                <h3 id="profileUserName">User</h3>
+                                <span>Member</span>
+                            </div>
+                        </div>
+                        <nav class="account-nav">
+                            <a href="#" class="active"><i class="fas fa-user-edit"></i> My Profile</a>
+                            <a href="#" onclick="showSection('ordersSection')"><i class="fas fa-box"></i> My Orders</a>
+                            <a href="#" onclick="showSection('wishlistSection')"><i class="fas fa-heart"></i> Wishlist</a>
+                        </nav>
+                    </div>
+                    
+                    <div class="account-main">
+                        <div class="account-card">
+                            <h3>Personal Information</h3>
+                            <form id="profileForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" id="profileFirstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" id="profileLastName" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="profileEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" id="profilePhone">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                        
+                        <div class="account-card">
+                            <div class="card-header-flex">
+                                <h3>Saved Addresses</h3>
+                                <button class="btn btn-outline btn-sm" id="addAddressBtn"><i class="fas fa-plus"></i> Add New</button>
+                            </div>
+                            <div id="addressList"></div>
+                        </div>
+                        
+                        <div class="account-card">
+                            <h3>Change Password</h3>
+                            <form id="changePasswordForm">
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input type="password" id="currentPassword" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <input type="password" id="newPassword" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input type="password" id="confirmPassword" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="adminSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Admin Panel</span>
+                </div>
+                
+                <div class="admin-header">
+                    <h2>Admin Dashboard</h2>
+                </div>
+                
+                <div class="admin-stats">
+                    <div class="stat-card stat-blue">
+                        <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalOrders">0</div>
+                            <div class="stat-label">Total Orders</div>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-green">
+                        <div class="stat-icon"><i class="fas fa-peso-sign"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalRevenue">P0</div>
+                            <div class="stat-label">Total Revenue</div>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-purple">
+                        <div class="stat-icon"><i class="fas fa-box"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalProducts">0</div>
+                            <div class="stat-label">Products</div>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-orange">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalUsers">0</div>
+                            <div class="stat-label">Users</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab active" data-tab="products"><i class="fas fa-box"></i> Products</button>
+                    <button class="admin-tab" data-tab="orders"><i class="fas fa-shopping-bag"></i> Orders</button>
+                    <button class="admin-tab" data-tab="users"><i class="fas fa-users"></i> Users</button>
+                </div>
+
+                <div id="adminProductsTab" class="admin-tab-content active">
+                    <div class="admin-toolbar">
+                        <h3>Product Management</h3>
+                        <button class="btn btn-primary" id="addProductBtn"><i class="fas fa-plus"></i> Add New Product</button>
+                    </div>
+                    <div class="table-container" id="adminProductsList"></div>
+                </div>
+
+                <div id="adminOrdersTab" class="admin-tab-content">
+                    <div class="admin-toolbar">
+                        <h3>Order Management</h3>
+                        <select id="adminOrderStatusFilter" class="filter-select">
+                            <option value="">All Orders</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="table-container" id="adminOrdersList"></div>
+                </div>
+
+                <div id="adminUsersTab" class="admin-tab-content">
+                    <div class="admin-toolbar">
+                        <h3>User Management</h3>
+                    </div>
+                    <div class="table-container" id="adminUsersList"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Form Modal (Updated to match image) -->
+        <div id="productFormModal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title" id="productFormTitle">Add New Product</h2>
+                <form id="productForm">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="productName" placeholder="Enter product name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="productDescription" rows="4" placeholder="Enter product description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (P)</label>
+                        <input type="number" id="productUnitPrice" min="0" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Quantity</label>
+                        <input type="number" id="productQuantity" min="0" placeholder="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="productCategory" class="filter-select">
+                            <option value="">Select Category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Home">Home & Living</option>
+                            <option value="Beauty">Beauty</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Toys">Toys & Games</option>
+                            <option value="Groceries">Groceries</option>
+                            <option value="Health">Health</option>
+                            <option value="Automotive">Automotive</option>
+                            <option value="Books">Books</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="url" id="productImageUrl" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('productFormModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Order Status Modal -->
+        <div id="orderStatusModal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Update Order Status</h2>
+                <form id="orderStatusForm">
+                    <div class="form-group">
+                        <label>Order Number</label>
+                        <input type="text" id="orderStatusNumber" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="orderStatusSelect" class="filter-select" required>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tracking Number</label>
+                        <input type="text" id="orderTrackingNumber" placeholder="Enter tracking number">
+                    </div>
+                    <div class="form-group">
+                        <label>Note</label>
+                        <textarea id="orderStatusNote" rows="3" placeholder="Add a note..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Update Status</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Auth Section -->
+        <section id="authSection" class="section">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <div class="auth-header">
+                        <h1>ShopHub</h1>
+                        <p>Your favorite marketplace</p>
+                    </div>
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Login</button>
+                        <button class="auth-tab" data-tab="register">Register</button>
+                    </div>
+
+                    <form id="loginForm" class="auth-form active">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </form>
+
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="registerFirstName" placeholder="First name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" id="registerLastName" placeholder="Last name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="registerPassword" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="registerPhone" placeholder="09XX XXX XXXX">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
+                        <p class="terms-text">By signing up, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Section -->
+        <section id="checkoutSection" class="section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="#" onclick="showSection('homeSection')">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="#" onclick="showSection('cartSection')">Cart</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Checkout</span>
+                </div>
+                
+                <div class="checkout-layout">
+                    <div class="checkout-main">
+                        <div class="checkout-card">
+                            <div class="checkout-step">
+                                <span class="step-number">1</span>
+                                <h3>Shipping Address</h3>
+                            </div>
+                            <form id="checkoutForm">
+                                <div class="form-group">
+                                    <label>Street Address</label>
+                                    <input type="text" id="checkoutStreet" placeholder="House/Unit No., Street, Barangay" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" id="checkoutCity" placeholder="City" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Province</label>
+                                        <input type="text" id="checkoutState" placeholder="Province" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Postal Code</label>
+                                        <input type="text" id="checkoutZip" placeholder="Postal Code" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Country</label>
+                                        <input type="text" id="checkoutCountry" value="Philippines" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="checkout-card">
+                            <div class="checkout-step">
+                                <span class="step-number">2</span>
+                                <h3>Payment Method</h3>
+                            </div>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="credit_card" checked>
+                                    <div class="payment-content">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Credit / Debit Card</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="gcash">
+                                    <div class="payment-content">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>GCash</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="maya">
+                                    <div class="payment-content">
+                                        <i class="fas fa-wallet"></i>
+                                        <span>Maya</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="cash_on_delivery">
+                                    <div class="payment-content">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>Cash on Delivery</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-sidebar">
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div id="checkoutItems" class="checkout-items"></div>
+                            <div class="summary-divider"></div>
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="checkoutSubtotal">P0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax (12%)</span>
+                                <span id="checkoutTax">P0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="checkoutShipping">P50.00</span>
+                            </div>
+                            <div class="summary-row discount">
+                                <span>Discount</span>
+                                <span id="checkoutDiscount">-P0.00</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="checkoutTotal">P0.00</span>
+                            </div>
+                            <button class="btn btn-primary btn-block btn-lg" id="placeOrderBtn">
+                                <i class="fas fa-lock"></i> Place Order
+                            </button>
+                            <button class="btn btn-ghost btn-block" onclick="showSection('cartSection')">
+                                <i class="fas fa-arrow-left"></i> Back to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>Customer Service</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">How to Buy</a></li>
+                            <li><a href="#">Returns & Refunds</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>About ShopHub</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Payment Methods</h4>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4>Delivery Partners</h4>
+                        <div class="shipping-icons">
+                            <span>J&T</span>
+                            <span>LBC</span>
+                            <span>Ninja Van</span>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>2025 ShopHub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-message"></div>
+        <button class="toast-close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
