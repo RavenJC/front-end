@@ -2,8 +2,8 @@
 const API = {
     AUTH: 'https://users-gh1g.onrender.com/api/auth',
     PRODUCTS: 'https://product-1-fdvq.onrender.com/api/products',
-    CART: 'https://cart-93y2.onrender.com/api/cart',
-    WISHLIST: 'https://cart-93y2.onrender.com/api/wishlist',
+    CART: 'https://cart-mjf8.onrender.com/api/cart',
+    WISHLIST: 'https://cart-mjf8.onrender.com/api/wishlist',
     ORDERS: 'https://order-tepx.onrender.com/api/orders'
 };
 
@@ -836,4 +836,5 @@ async function deleteUser(userId) {
     const r = await apiRequest(`${API.AUTH}/users/${userId}`, { method: 'DELETE' });
     hideLoader();
     if (r.success) { showToast('User deleted'); loadAdminDashboard(); } else showToast(r.message, 'error');
+
 }
